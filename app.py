@@ -67,7 +67,7 @@ If you don't think its a dating profile and its something else, just say "doesn'
 
 def main():
     st.set_page_config(
-        page_title="Verge",
+        page_title="Outlier",
         layout="wide",
         initial_sidebar_state="collapsed",
         menu_items={}
