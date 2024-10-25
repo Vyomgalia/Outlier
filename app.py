@@ -78,6 +78,7 @@ def main():
             <style>
             #MainMenu {visibility: hidden;}
             footer {visibility: hidden;}
+            .viewerBadge_container__1QSob {display: none !important;}
             header {visibility: hidden;}
             section[data-testid="stSidebar"][aria-expanded="true"]{
                 display: none;
