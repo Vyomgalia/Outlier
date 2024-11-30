@@ -74,29 +74,29 @@ def main():
     )
 
     hide_streamlit_style = """
-            <style>
-            #MainMenu {visibility: hidden;}
-            footer {visibility: hidden;}
-            header {visibility: hidden;}
-            section[data-testid="stSidebar"][aria-expanded="true"]{
-                display: none;
-            }
-            div[data-testid="collapsedControl"] {
-                visibility: hidden;
-            }
-            </style>
-            """
-    hide_elements_style = """
     <style>
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    header {visibility: hidden;}
+    section[data-testid="stSidebar"][aria-expanded="true"] {
+        display: none;
+    }
+    div[data-testid="collapsedControl"] {
+        visibility: hidden;
+    }
     button[data-testid="manage-app-button"] {
         visibility: hidden;
     }
     .stApp {
         margin-bottom: 0;
     }
+    .stFooter {
+        visibility: hidden;
+    }
     </style>
-"""
-    st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+    """
+
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
     # Custom CSS for styling
     st.markdown("""
