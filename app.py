@@ -73,12 +73,10 @@ def main():
         menu_items={}
     )
 
-    # Hide the sidebar and toggle button
     hide_streamlit_style = """
             <style>
             #MainMenu {visibility: hidden;}
             footer {visibility: hidden;}
-            .viewerBadge_container__1QSob {display: none !important;}
             header {visibility: hidden;}
             section[data-testid="stSidebar"][aria-expanded="true"]{
                 display: none;
@@ -88,6 +86,7 @@ def main():
             }
             </style>
             """
+    st.markdown(hide_streamlit_style, unsafe_allow_html=True)
     st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
     # Custom CSS for styling
