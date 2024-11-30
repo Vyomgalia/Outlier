@@ -86,6 +86,16 @@ def main():
             }
             </style>
             """
+    hide_elements_style = """
+    <style>
+    button[data-testid="manage-app-button"] {
+        visibility: hidden;
+    }
+    .stApp {
+        margin-bottom: 0;
+    }
+    </style>
+"""
     st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
     # Custom CSS for styling
