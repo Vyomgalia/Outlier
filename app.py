@@ -76,7 +76,8 @@ def main():
     hide_streamlit_style = """
     <style>
     #MainMenu {visibility: hidden;}
-    #footer {visibility: hidden;}
+    header {visibility: hidden;}
+    footer {visibility: hidden;}
     section[data-testid="stSidebar"][aria-expanded="true"] {
         display: none;
     }
