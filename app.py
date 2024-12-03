@@ -73,16 +73,62 @@ def main():
         menu_items={}
     )
 
-    
     hide_streamlit_style = """
     <style>
-        #MainMenu {visibility: hidden;} /* Hides the hamburger menu */
-        footer {visibility: hidden!important;} /* Hides the footer */
-        header {visibility: hidden;} /* Hides the header */
-        ._container_gzau3_1._viewerBadge_nim44_23 {display: none!important;} /* Hides "Hosted with Streamlit" */
-        ._profileContainer_gzau3_53 {display: none!important;} /* Hides "Created by" profile container */
+        #MainMenu {visibility: hidden !important;} /* Hides the hamburger menu */
+        footer {visibility: hidden !important;} /* Hides the default footer */
+        header {visibility: hidden !important;} /* Hides the header */
+    
+        /* Forcefully hide the problematic elements using !important */
+        ._profilePreview_gzau3_63 {display: none !important;} /* Hides "Created by" profile container */
+        ._viewerBadge_nim44_23 {display: none !important;} /* Hides "Hosted with Streamlit" badge */
+        button[data-testid="manage-app-button"] {display: none !important;} /* Hides the Manage app button */
     </style>
+    
+    <script>
+    // JavaScript to remove unwanted elements using MutationObserver
+    document.addEventListener('DOMContentLoaded', function() {
+        const targetNode = document.body; // Observe changes in the entire body
+    
+        const observerConfig = {
+            childList: true, 
+            subtree: true
+        };
+    
+        const observerCallback = function(mutationsList, observer) {
+            for (let mutation of mutationsList) {
+                if (mutation.type === 'childList') {
+                    // Hide "Created by" profile container
+                    var profileContainer = document.querySelector('._profilePreview_gzau3_63');
+                    if (profileContainer) {
+                        profileContainer.style.display = 'none';
+                    }
+    
+                    // Hide "Hosted with Streamlit" badge
+                    var viewerBadge = document.querySelector('._viewerBadge_nim44_23');
+                    if (viewerBadge) {
+                        viewerBadge.style.display = 'none';
+                    }
+    
+                    // Hide "Manage app" button
+                    var manageAppButton = document.querySelector('button[data-testid="manage-app-button"]');
+                    if (manageAppButton) {
+                        manageAppButton.style.display = 'none';
+                    }
+                }
+            }
+        };
+    
+        // Create an instance of MutationObserver with the callback
+        const observer = new MutationObserver(observerCallback);
+    
+        // Start observing the target node for configured mutations
+        observer.observe(targetNode, observerConfig);
+    });
+    </script>
     """
+
+# Inject CSS and JavaScript to the Streamlit page
     st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
     # Custom CSS for styling
