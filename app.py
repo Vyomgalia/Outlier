@@ -77,10 +77,10 @@ def main():
     hide_streamlit_style = """
     <style>
         #MainMenu {visibility: hidden;} /* Hides the hamburger menu */
-        footer {visibility: hidden;} /* Hides the footer */
+        footer {visibility: hidden!important;} /* Hides the footer */
         header {visibility: hidden;} /* Hides the header */
-        ._container_gzau3_1._viewerBadge_nim44_23 {display: none;} /* Hides "Hosted with Streamlit" */
-        ._profileContainer_gzau3_53 {display: none;} /* Hides "Created by" profile container */
+        ._container_gzau3_1._viewerBadge_nim44_23 {display: none!important;} /* Hides "Hosted with Streamlit" */
+        ._profileContainer_gzau3_53 {display: none!important;} /* Hides "Created by" profile container */
     </style>
     """
     st.markdown(hide_streamlit_style, unsafe_allow_html=True)
