@@ -21,6 +21,38 @@ def load_prompt(prompt_file_path):
         return file.read()
 
 
+# JavaScript to continuously remove unwanted Streamlit elements
+remove_streamlit_branding = """
+<script>
+    function removeElements() {
+        const unwantedElements = [
+            '._container_gzau3_1._viewerBadge_nim44_23',  // "Hosted with Streamlit" badge
+            '._profileContainer_gzau3_53',                // "Created by" section
+            '._profilePreview_gzau3_63',                  // Profile preview section (mobile view)
+            'button[data-testid="manage-app-button"]'     // "Manage app" button
+        ];
+        unwantedElements.forEach(selector => {
+            const elements = document.querySelectorAll(selector);
+            elements.forEach(element => {
+                element.style.display = 'none';
+            });
+        });
+    }
+
+    // Run the function repeatedly until all elements are removed
+    const removalInterval = setInterval(() => {
+        removeElements();
+        // If there are no more unwanted elements in the DOM, stop the interval
+        const allRemoved = !document.querySelector('._container_gzau3_1._viewerBadge_nim44_23') &&
+                           !document.querySelector('._profileContainer_gzau3_53') &&
+                           !document.querySelector('._profilePreview_gzau3_63') &&
+                           !document.querySelector('button[data-testid="manage-app-button"]');
+        if (allRemoved) {
+            clearInterval(removalInterval);
+        }
+    }, 500); // Check every 500 milliseconds
+</script>
+"""
 def generate_review(images):
     try:
         # Send all images together to the Gemini model for review
@@ -74,51 +106,9 @@ def main():
         menu_items={}
     )
 
-    # Hide Streamlit elements with CSS and JS
+    
     # Hide Streamlit elements with CSS and JavaScript
-    st.markdown("""
-        <style>
-            #MainMenu {visibility: hidden !important;} /* Hides the hamburger menu */
-            footer {visibility: hidden !important;} /* Hides the footer */
-            header {visibility: hidden !important;} /* Hides the header */
-            section[data-testid="stSidebar"][aria-expanded="true"] {
-                display: none !important; /* Hides the expanded sidebar */
-            }
-            div[data-testid="collapsedControl"] {
-                visibility: hidden !important; /* Hides the toggle button for sidebar */
-            }
-            div.block-container {padding-bottom: 0 !important;} /* Removes extra padding */
-            ._container_gzau3_1._viewerBadge_nim44_23 {
-                display: none !important; /* Hides the Hosted with Streamlit badge */
-            }
-            ._profileContainer_gzau3_53 {
-                display: none !important; /* Hides the Created by section */
-            }
-            button[data-testid="manage-app-button"] {
-                display: none !important; /* Hides the Manage app button */
-            }
-        </style>
-
-        <script>
-            // JavaScript to remove unwanted elements
-            setTimeout(function() {
-                var streamlitBadge = document.querySelector('._container_gzau3_1._viewerBadge_nim44_23');
-                if (streamlitBadge) {
-                    streamlitBadge.style.display = 'none';
-                }
-                
-                var profileContainer = document.querySelector('._profileContainer_gzau3_53');
-                if (profileContainer) {
-                    profileContainer.style.display = 'none';
-                }
-                
-                var manageButton = document.querySelector('button[data-testid="manage-app-button"]');
-                if (manageButton) {
-                    manageButton.style.display = 'none';
-                }
-            }, 1000); // Delay to allow the elements to load before hiding them
-        </script>
-    """, unsafe_allow_html=True)
+    st.markdown(remove_streamlit_branding, unsafe_allow_html=True)
 
     # Custom CSS for styling
     st.markdown("""
