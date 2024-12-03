@@ -73,28 +73,28 @@ def main():
         menu_items={}
     )
 
+
+    # Hide Streamlit elements with CSS and JS
     hide_streamlit_style = """
     <style>
-    #MainMenu {visibility: hidden;}
-    header {visibility: hidden;}
-    section[data-testid="stSidebar"][aria-expanded="true"] {
-        display: none;
-    }
-    div[data-testid="collapsedControl"] {
-        visibility: hidden;
-    }
-    button[data-testid="manage-app-button"] {
-        visibility: hidden;
-    }
-    .stApp {
-        margin-bottom: 0;
-    }
-    .stFooter {
-        visibility: hidden;
-    }
+    /* CSS to hide unwanted Streamlit elements */
+    body div#MainMenu {visibility: hidden !important;}
+    body footer {visibility: hidden !important;}
+    body header {visibility: hidden !important;}
+    body section[data-testid="stSidebar"][aria-expanded="true"] {display: none !important;}
+    body div[data-testid="collapsedControl"] {visibility: hidden !important;}
     </style>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var mainMenu = document.querySelector("#MainMenu");
+        var footer = document.querySelector("footer");
+        var header = document.querySelector("header");
+        if (mainMenu) mainMenu.style.display = "none";
+        if (footer) footer.style.display = "none";
+        if (header) header.style.display = "none";
+    });
+    </script>
     """
-
     st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
     # Custom CSS for styling
