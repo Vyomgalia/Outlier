@@ -87,24 +87,30 @@ def main():
             visibility: hidden;
         }
         div.block-container {padding-bottom: 0;}
-        footer:has(> div.streamlit-container) {
-            display: none !important;
-        }
-        footer:has([title="Streamlit badge"]) {
-            display: none !important;
-        }
-        button[data-testid="manage-app-button"] {
-            display: none !important;
-        }
-        ._container_gzau3_1._viewerBadge_nim44_23 {
-            display: none !important; /* Hides the Hosted with Streamlit badge */
-        }
-        ._profileContainer_gzau3_53 {
-            display: none !important; /* Hides the Created by section */
-        }
         </style>
+        <script>
+        // Continuously check and remove unwanted elements
+        const observer = new MutationObserver(() => {
+            const hostedBadge = document.querySelector('._container_gzau3_1._viewerBadge_nim44_23');
+            const createdBySection = document.querySelector('._profileContainer_gzau3_53');
+            const manageAppButton = document.querySelector('button[data-testid="manage-app-button"]');
+            
+            if (hostedBadge) {
+                hostedBadge.style.display = 'none';
+            }
+            if (createdBySection) {
+                createdBySection.style.display = 'none';
+            }
+            if (manageAppButton) {
+                manageAppButton.style.display = 'none';
+            }
+        });
+    
+        observer.observe(document.body, { childList: true, subtree: true });
+        </script>
     """
     st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
 
 
     # Custom CSS for styling
