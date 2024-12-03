@@ -76,19 +76,27 @@ def main():
 
     # Hide Streamlit elements with CSS and JS
     hide_streamlit_style = """
-            <style>
-            #MainMenu {visibility: hidden;}
-            footer {visibility: hidden;}
-            header {visibility: hidden;}
-            section[data-testid="stSidebar"][aria-expanded="true"]{
-                display: none;
-            }
-            div[data-testid="collapsedControl"] {
-                visibility: hidden;
-            }
-            </style>
-            """
+        <style>
+        #MainMenu {visibility: hidden;}
+        footer {visibility: hidden;}
+        header {visibility: hidden;}
+        section[data-testid="stSidebar"][aria-expanded="true"] {
+            display: none;
+        }
+        div[data-testid="collapsedControl"] {
+            visibility: hidden;
+        }
+        div.block-container {padding-bottom: 0;}
+        footer:has(> div.streamlit-container) {
+            display: none !important;
+        }
+        footer:has([title="Streamlit badge"]) {
+            display: none !important;
+        }
+        </style>
+    """
     st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
 
     # Custom CSS for styling
     st.markdown("""
