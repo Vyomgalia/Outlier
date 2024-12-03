@@ -75,41 +75,30 @@ def main():
 
 
     # Hide Streamlit elements with CSS and JS
-    hide_streamlit_style = """
-        <style>
-        #MainMenu {visibility: hidden;}
-        footer {visibility: hidden;}
-        header {visibility: hidden;}
+    st.markdown("""
+    <style>
+        #MainMenu {visibility: hidden !important;} /* Hides the hamburger menu */
+        footer {visibility: hidden !important;} /* Hides the footer */
+        header {visibility: hidden !important;} /* Hides the header */
         section[data-testid="stSidebar"][aria-expanded="true"] {
-            display: none;
+            display: none !important; /* Hides the expanded sidebar */
         }
         div[data-testid="collapsedControl"] {
-            visibility: hidden;
+            visibility: hidden !important; /* Hides the toggle button for sidebar */
         }
-        div.block-container {padding-bottom: 0;}
+        div.block-container {padding-bottom: 0 !important;} /* Removes extra padding */
+        ._container_gzau3_1._viewerBadge_nim44_23 {
+            display: none !important; /* Hides the Hosted with Streamlit badge */
+        }
+        ._profileContainer_gzau3_53 {
+            display: none !important; /* Hides the Created by section */
+        }
+        button[data-testid="manage-app-button"] {
+            display: none !important; /* Hides the Manage app button */
+        }
         </style>
-        <script>
-        // Continuously check and remove unwanted elements
-        const observer = new MutationObserver(() => {
-            const hostedBadge = document.querySelector('._container_gzau3_1._viewerBadge_nim44_23');
-            const createdBySection = document.querySelector('._profileContainer_gzau3_53');
-            const manageAppButton = document.querySelector('button[data-testid="manage-app-button"]');
-            
-            if (hostedBadge) {
-                hostedBadge.style.display = 'none';
-            }
-            if (createdBySection) {
-                createdBySection.style.display = 'none';
-            }
-            if (manageAppButton) {
-                manageAppButton.style.display = 'none';
-            }
-        });
-    
-        observer.observe(document.body, { childList: true, subtree: true });
-        </script>
-    """
-    st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+    """, unsafe_allow_html=True)
+
 
 
 
