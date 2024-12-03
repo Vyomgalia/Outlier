@@ -96,9 +96,13 @@ def main():
         button[data-testid="manage-app-button"] {
             display: none !important;
         }
+        ._terminalButton_rix23_138 {
+            display: none !important;
+        }
         </style>
     """
     st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
 
 
 
