@@ -75,7 +75,7 @@ def main():
 
 
     # Hide Streamlit elements with CSS and JS
- hide_streamlit_style = """
+    hide_streamlit_style = """
             <style>
             #MainMenu {visibility: hidden;}
             footer {visibility: hidden;}
