@@ -76,31 +76,48 @@ def main():
 
     # Hide Streamlit elements with CSS and JS
     st.markdown("""
-    <style>
-        #MainMenu {visibility: hidden !important;} /* Hides the hamburger menu */
-        footer {visibility: hidden !important;} /* Hides the footer */
-        header {visibility: hidden !important;} /* Hides the header */
-        section[data-testid="stSidebar"][aria-expanded="true"] {
-            display: none !important; /* Hides the expanded sidebar */
-        }
-        div[data-testid="collapsedControl"] {
-            visibility: hidden !important; /* Hides the toggle button for sidebar */
-        }
-        div.block-container {padding-bottom: 0 !important;} /* Removes extra padding */
-        ._container_gzau3_1._viewerBadge_nim44_23 {
-            display: none !important; /* Hides the Hosted with Streamlit badge */
-        }
-        ._profileContainer_gzau3_53 {
-            display: none !important; /* Hides the Created by section */
-        }
-        button[data-testid="manage-app-button"] {
-            display: none !important; /* Hides the Manage app button */
-        }
+        <style>
+            #MainMenu {visibility: hidden !important;} /* Hides the hamburger menu */
+            footer {visibility: hidden !important;} /* Hides the footer */
+            header {visibility: hidden !important;} /* Hides the header */
+            section[data-testid="stSidebar"][aria-expanded="true"] {
+                display: none !important; /* Hides the expanded sidebar */
+            }
+            div[data-testid="collapsedControl"] {
+                visibility: hidden !important; /* Hides the toggle button for sidebar */
+            }
+            div.block-container {padding-bottom: 0 !important;} /* Removes extra padding */
+            ._container_gzau3_1._viewerBadge_nim44_23 {
+                display: none !important; /* Hides the Hosted with Streamlit badge */
+            }
+            ._profileContainer_gzau3_53 {
+                display: none !important; /* Hides the Created by section */
+            }
+            button[data-testid="manage-app-button"] {
+                display: none !important; /* Hides the Manage app button */
+            }
         </style>
+
+        <script>
+            // JavaScript to remove unwanted elements
+            setTimeout(function() {
+                var streamlitBadge = document.querySelector('._container_gzau3_1._viewerBadge_nim44_23');
+                if (streamlitBadge) {
+                    streamlitBadge.style.display = 'none';
+                }
+                
+                var profileContainer = document.querySelector('._profileContainer_gzau3_53');
+                if (profileContainer) {
+                    profileContainer.style.display = 'none';
+                }
+                
+                var manageButton = document.querySelector('button[data-testid="manage-app-button"]');
+                if (manageButton) {
+                    manageButton.style.display = 'none';
+                }
+            }, 1000); // Delay to allow the elements to load before hiding them
+        </script>
     """, unsafe_allow_html=True)
-
-
-
 
     # Custom CSS for styling
     st.markdown("""
