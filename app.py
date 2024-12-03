@@ -20,39 +20,6 @@ def load_prompt(prompt_file_path):
     with open(prompt_file_path, "r") as file:
         return file.read()
 
-
-# JavaScript to continuously remove unwanted Streamlit elements
-remove_streamlit_branding = """
-<script>
-    function removeElements() {
-        const unwantedElements = [
-            '._container_gzau3_1._viewerBadge_nim44_23',  // "Hosted with Streamlit" badge
-            '._profileContainer_gzau3_53',                // "Created by" section
-            '._profilePreview_gzau3_63',                  // Profile preview section (mobile view)
-            'button[data-testid="manage-app-button"]'     // "Manage app" button
-        ];
-        unwantedElements.forEach(selector => {
-            const elements = document.querySelectorAll(selector);
-            elements.forEach(element => {
-                element.style.display = 'none';
-            });
-        });
-    }
-
-    // Run the function repeatedly until all elements are removed
-    const removalInterval = setInterval(() => {
-        removeElements();
-        // If there are no more unwanted elements in the DOM, stop the interval
-        const allRemoved = !document.querySelector('._container_gzau3_1._viewerBadge_nim44_23') &&
-                           !document.querySelector('._profileContainer_gzau3_53') &&
-                           !document.querySelector('._profilePreview_gzau3_63') &&
-                           !document.querySelector('button[data-testid="manage-app-button"]');
-        if (allRemoved) {
-            clearInterval(removalInterval);
-        }
-    }, 500); // Check every 500 milliseconds
-</script>
-"""
 def generate_review(images):
     try:
         # Send all images together to the Gemini model for review
@@ -107,8 +74,16 @@ def main():
     )
 
     
-    # Hide Streamlit elements with CSS and JavaScript
-    st.markdown(remove_streamlit_branding, unsafe_allow_html=True)
+    hide_streamlit_style = """
+    <style>
+        #MainMenu {visibility: hidden;} /* Hides the hamburger menu */
+        footer {visibility: hidden;} /* Hides the footer */
+        header {visibility: hidden;} /* Hides the header */
+        ._container_gzau3_1._viewerBadge_nim44_23 {display: none;} /* Hides "Hosted with Streamlit" */
+        ._profileContainer_gzau3_53 {display: none;} /* Hides "Created by" profile container */
+    </style>
+    """
+    st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
     # Custom CSS for styling
     st.markdown("""
