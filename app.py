@@ -96,14 +96,15 @@ def main():
         button[data-testid="manage-app-button"] {
             display: none !important;
         }
-        ._terminalButton_rix23_138 {
-            display: none !important;
+        ._container_gzau3_1._viewerBadge_nim44_23 {
+            display: none !important; /* Hides the Hosted with Streamlit badge */
+        }
+        ._profileContainer_gzau3_53 {
+            display: none !important; /* Hides the Created by section */
         }
         </style>
     """
     st.markdown(hide_streamlit_style, unsafe_allow_html=True)
-
-
 
 
     # Custom CSS for styling
