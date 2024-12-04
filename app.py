@@ -74,23 +74,31 @@ def main():
     )
 
     hide_streamlit_style = """
-                <style>
-                #MainMenu {visibility: hidden;}
-                footer {visibility: hidden;}
-                header {visibility: hidden;}
-                section[data-testid="stSidebar"][aria-expanded="true"] {
-                    display: none;
-                }
-                div[data-testid="collapsedControl"] {
-                    visibility: hidden;
-                }
-                /* Hide the "Created by" text */
-                p._createdByLabel_gzau3_104._dark_gzau3_91 {
-                    display: none !important;
-                }
-                </style>
-                """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            header {visibility: hidden;}
+            section[data-testid="stSidebar"][aria-expanded="true"] {
+                display: none !important;
+            }
+            div[data-testid="collapsedControl"] {
+                visibility: hidden !important;
+            }
+            
+            /* Hide "Created by" text and avatar */
+            div._profileContainer_gzau3_53 {
+                display: none !important;
+            }
+            div._profilePreview_gzau3_63 {
+                display: none !important;
+            }
+            img[data-testid="appCreatorAvatar"] {
+                display: none !important;
+            }
+            </style>
+            """
     st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
 
  # Custom CSS for styling
     st.markdown("""
