@@ -96,9 +96,25 @@ def main():
                 button[class*="_terminalButton"] {
                     display: none !important;
                 }
+    
+                /* Forcefully hide dynamic display: flex for Manage app button */
+                button[data-testid="manage-app-button"] {
+                    display: none !important;
+                }
+    
+                /* Additional generic rule for dynamic flex buttons */
+                button {
+                    display: none !important;
+                }
+    
+                /* Hide the App Creator Avatar */
+                img[data-testid="appCreatorAvatar"] {
+                    display: none !important;
+                }
                 </style>
                 """
     st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
 
  # Custom CSS for styling
     st.markdown("""
