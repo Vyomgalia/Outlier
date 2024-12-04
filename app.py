@@ -80,7 +80,7 @@ def main():
                 footer {visibility: hidden;}
     
                 /* Hide Header */
-                header {visibility: hidden;}
+                /*header {visibility: hidden;}*/
     
                 /* Hide dynamically generated profile avatar and container */
                 div[class*="_profilePreview"],
