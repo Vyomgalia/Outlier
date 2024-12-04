@@ -73,9 +73,9 @@ def main():
         menu_items={}
     )
 
-    hide_streamlit_style = """
+      hide_streamlit_style = """
                 <style>
-                /* Hide the "Created by" container on all devices */
+                /* Hide the "Created by" container */
                 div[class*="_profileContainer"],
                 div[class*="_profilePreview"],
                 div[class*="_createdByLabel"] {
@@ -112,18 +112,10 @@ def main():
                 button, [role=button] {
                     display: none !important;
                 }
-    
-                /* Hide "Created by" specifically for mobile view */
-                @media (max-width: 768px) {
-                    div[class*="_createdByLabel"],
-                    div[class*="_profilePreview"],
-                    img[data-testid="appCreatorAvatar"] {
-                        display: none !important;
-                    }
-                }
                 </style>
                 """
     st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
 
 
 
