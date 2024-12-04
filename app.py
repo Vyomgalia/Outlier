@@ -75,10 +75,18 @@ def main():
 
     hide_streamlit_style = """
                 <style>
+
+                /* Hide the specific sidebar sections */
+                [data-testid="stSidebar"] {
+                    display: none !important;
+                }
+                 /* Hide collapsed control button */
+                [data-testid="collapsedControl"] {
+                    visibility: hidden;
+                }
     
                 /* footer {visibility: hidden;} */
                 
-    
                 /* Hide Header */
                 header {visibility: hidden;}
     
@@ -87,16 +95,6 @@ def main():
                 div[class*="_profileContainer"],
                 img[class*="_profileImage"] {
                     display: none !important;
-                }
-    
-                /* Hide the specific sidebar sections */
-                [data-testid="stSidebar"] {
-                    display: none !important;
-                }
-    
-                /* Hide collapsed control button */
-                [data-testid="collapsedControl"] {
-                    visibility: hidden;
                 }
                 </style>
                 """
