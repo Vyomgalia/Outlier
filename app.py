@@ -74,31 +74,31 @@ def main():
     )
 
     hide_streamlit_style = """
-                <style>
+            <style>
+            /* Hide the "Created by" container */
+            div[class*="_profileContainer"],
+            div[class*="_profilePreview"],
+            div[class*="_createdByLabel"] {
+                display: none !important;
+            }
 
-                /* Hide the specific sidebar sections */
-                [data-testid="stSidebar"] {
-                    display: none !important;
-                }
-                 /* Hide collapsed control button */
-                [data-testid="collapsedControl"] {
-                    visibility: hidden;
-                }
-    
-                /* footer {visibility: hidden;} */
-                
-                /* Hide Header */
-                header {visibility: hidden;}
-    
-                /* Hide dynamically generated profile avatar and container */
-                div[class*="_profilePreview"],
-                div[class*="_profileContainer"],
-                img[class*="_profileImage"] {
-                    display: none !important;
-                }
-                </style>
-                """
+            /* Hide the Header */
+            header {visibility: hidden;}
+
+            /* Optionally, hide any iframes or badges */
+            iframe[class*="_iframe"],
+            a[class*="_viewerBadge"] {
+                display: none !important;
+            }
+
+            /* Ensure all dynamic badges or links are hidden */
+            div[class*="_viewerBadge"] {
+                display: none !important;
+            }
+            </style>
+            """
     st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
 
 
     # Custom CSS for styling
