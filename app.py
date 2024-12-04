@@ -75,30 +75,35 @@ def main():
 
     hide_streamlit_style = """
                 <style>
-                    /* Hide the Streamlit header and menu */
-                    header {visibility: hidden;}
-                    
-                    /* Optionally hide the footer */
-                    .streamlit-footer {display: none;}
+                /* Hide Main Menu */
+                #MainMenu {visibility: hidden;}
     
-                    /* Hide dynamically generated profile preview container */
-                    div[class^="_profilePreview"] {
-                        display: none;
-                    }
+                /* Hide Footer */
+                footer {visibility: hidden;}
     
-                    /* Hide profile image container */
-                    div[class^="_profileContainer"] {
-                        display: none;
-                    }
+                /* Hide Header */
+                header {visibility: hidden;}
     
-                    /* Hide state container */
-                    div[class^="_stateContainer"] {
-                        display: none;
-                    }
+                /* Hide dynamically generated profile avatar and container */
+                div[class*="_profilePreview"],
+                div[class*="_profileContainer"],
+                img[class*="_profileImage"] {
+                    display: none !important;
+                }
+    
+                /* Hide the specific sidebar sections */
+                [data-testid="stSidebar"] {
+                    display: none !important;
+                }
+    
+                /* Hide collapsed control button */
+                [data-testid="collapsedControl"] {
+                    visibility: hidden;
+                }
                 </style>
                 """
-    
     st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
 
     # Custom CSS for styling
     st.markdown("""
