@@ -76,11 +76,11 @@ def main():
     hide_streamlit_style = """
                 <style>
     
-                /* Hide Footer */
-                footer {visibility: hidden;}
+                /* footer {visibility: hidden;} */
+                
     
                 /* Hide Header */
-                /*header {visibility: hidden;}*/
+                header {visibility: hidden;}
     
                 /* Hide dynamically generated profile avatar and container */
                 div[class*="_profilePreview"],
