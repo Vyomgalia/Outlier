@@ -74,34 +74,33 @@ def main():
     )
 
     hide_streamlit_style = """
-            <style>
-            /* Hide the "Created by" container */
-            div[class*="_profileContainer"],
-            div[class*="_profilePreview"],
-            div[class*="_createdByLabel"] {
-                display: none !important;
-            }
-
-            /* Hide the Header */
-            header {visibility: hidden;}
-
-            /* Optionally, hide any iframes or badges */
-            iframe[class*="_iframe"],
-            a[class*="_viewerBadge"] {
-                display: none !important;
-            }
-
-            /* Ensure all dynamic badges or links are hidden */
-            div[class*="_viewerBadge"] {
-                display: none !important;
-            }
-            </style>
-            """
+                <style>
+                /* Hide the "Created by" container */
+                div[class*="_profileContainer"],
+                div[class*="_profilePreview"],
+                div[class*="_createdByLabel"] {
+                    display: none !important;
+                }
+    
+                /* Hide the Header */
+                header {visibility: hidden;}
+    
+                /* Optionally, hide any iframes or badges */
+                iframe[class*="_iframe"],
+                a[class*="_viewerBadge"] {
+                    display: none !important;
+                }
+    
+                /* Hide the Manage app button */
+                button[data-testid="manage-app-button"],
+                button[class*="_terminalButton"] {
+                    display: none !important;
+                }
+                </style>
+                """
     st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
-
-
-    # Custom CSS for styling
+ # Custom CSS for styling
     st.markdown("""
         <style>
             body {
