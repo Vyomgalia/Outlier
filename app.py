@@ -74,15 +74,30 @@ def main():
     )
 
     hide_streamlit_style = """
-    <style>
-        #MainMenu {visibility: hidden;} /* Hides the hamburger menu */
-        footer {visibility: hidden;} /* Hides the footer */
-        header {visibility: hidden;} /* Hides the header */
-        ._container_gzau3_1._viewerBadge_nim44_23 {display: none;} /* Hides "Hosted with Streamlit" */
-        ._profileContainer_gzau3_53 {display: none;} /* Hides "Created by" profile container */
-    </style>
-    """
-
+                <style>
+                    /* Hide the Streamlit header and menu */
+                    header {visibility: hidden;}
+                    
+                    /* Optionally hide the footer */
+                    .streamlit-footer {display: none;}
+    
+                    /* Hide dynamically generated profile preview container */
+                    div[class^="_profilePreview"] {
+                        display: none;
+                    }
+    
+                    /* Hide profile image container */
+                    div[class^="_profileContainer"] {
+                        display: none;
+                    }
+    
+                    /* Hide state container */
+                    div[class^="_stateContainer"] {
+                        display: none;
+                    }
+                </style>
+                """
+    
     st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
     # Custom CSS for styling
