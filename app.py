@@ -74,46 +74,48 @@ def main():
     )
 
     hide_streamlit_style = """
-                <style>
-                /* Hide the "Created by" container */
-                div[class*="_profileContainer"],
-                div[class*="_profilePreview"],
-                div[class*="_createdByLabel"] {
-                    display: none !important;
-                }
-    
-                /* Hide the Header */
-                header {visibility: hidden;}
-    
-                /* Optionally, hide any iframes or badges */
-                iframe[class*="_iframe"],
-                a[class*="_viewerBadge"] {
-                    display: none !important;
-                }
-    
-                /* Hide the Manage app button */
-                button[data-testid="manage-app-button"],
-                button[class*="_terminalButton"] {
-                    display: none !important;
-                }
-    
-                /* Forcefully hide dynamic display: flex for Manage app button */
-                button[data-testid="manage-app-button"] {
-                    display: none !important;
-                }
-    
-                /* Additional generic rule for dynamic flex buttons */
-                button {
-                    display: none !important;
-                }
-    
-                /* Hide the App Creator Avatar */
-                img[data-testid="appCreatorAvatar"] {
-                    display: none !important;
-                }
-                </style>
-                """
+            <style>
+            /* Hide the "Created by" container */
+            div[class*="_profileContainer"],
+            div[class*="_profilePreview"],
+            div[class*="_createdByLabel"] {
+                display: none !important;
+            }
+
+            /* Hide the Header */
+            header {visibility: hidden;}
+
+            /* Optionally, hide any iframes or badges */
+            iframe[class*="_iframe"],
+            a[class*="_viewerBadge"] {
+                display: none !important;
+            }
+
+            /* Hide the Manage app button */
+            button[data-testid="manage-app-button"],
+            button[class*="_terminalButton"],
+            ._terminalButton_rix23_138 {
+                display: none !important;
+            }
+
+            /* Forcefully hide dynamic display: flex for Manage app button */
+            button[data-testid="manage-app-button"] {
+                display: none !important;
+            }
+
+            /* Hide the App Creator Avatar */
+            img[data-testid="appCreatorAvatar"] {
+                display: none !important;
+            }
+
+            /* Additional fallback to hide any buttons dynamically added */
+            button, [role=button] {
+                display: none !important;
+            }
+            </style>
+            """
     st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
 
 
  # Custom CSS for styling
