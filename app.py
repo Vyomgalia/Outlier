@@ -73,7 +73,7 @@ def main():
         menu_items={}
     )
 
-     hide_streamlit_style = """
+    hide_streamlit_style = """
                 <style>
                 #MainMenu {visibility: hidden;}
                 footer {visibility: hidden;}
