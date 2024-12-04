@@ -669,10 +669,6 @@ def main():
             <div class="panel">
                 <p>At Outlier, we understand that personal care extends beyond skincare. We want to help men present their best selves, both online and offline. This tool is an extension of our mission to boost confidence and success in all aspects of life.</p>
             </div>
-            <button class="accordion">Q5: Is the tool free to use?</button>
-            <div class="panel">
-                <p>Yes, the basic version of our tool is free. We also offer premium features for a more in-depth analysis and advanced tips.</p>
-            </div>
             <button class="accordion">Q6: How accurate are the suggestions?</button>
             <div class="panel">
                 <p>The suggestions are based on the collective insights of over 10+ women, ensuring that the feedback is practical and effective in improving your dating profile.</p>
